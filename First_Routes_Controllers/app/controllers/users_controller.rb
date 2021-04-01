@@ -6,10 +6,6 @@ class UsersController < ApplicationController
     end
 
 
-    def create
-        render json: params
-    end
-
     def show
         user = User.find(params[:id])
         render json: user
@@ -39,6 +35,7 @@ class UsersController < ApplicationController
     def destroy
         user = User.find(params[:id])
         user.destroy
+        redirect_to users_url
     end
 
     private 

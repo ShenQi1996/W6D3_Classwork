@@ -6,12 +6,21 @@
 #  username :string
 #
 class User < ApplicationRecord 
-    validates :name, presence: true
-    validates :email, presence: true  
+    validates :username, presence: true
+  
       
 
-    has_many :artworks,
+    has_many :artworks, 
         foreign_key: :artist_id,
-        class_name: :Artwork
+        class_name: :Artwork,
+        dependent: :destory
 
+    has_many :viewable_artworks,
+    foreign_key: :viewer_id, 
+    class_name: :ArtworkShare
+
+    has_many :shared_artworks,
+    through: :viewable_artworks,
+    source: :artwork,
+    dependent: :destory
 end
