@@ -1,8 +1,8 @@
 class ArtworksController < ApplicationController
-     def index
-        artworks = Artwork.all
-        render json: artworks
-    end
+    #  def index
+    #     artworks = Artwork.all
+    #     render json: artworks
+    # end
 
 
     def show
